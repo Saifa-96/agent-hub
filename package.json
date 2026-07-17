@@ -1,0 +1,16 @@
+{
+    "name": "agent-hub",
+    "private": true,
+    "packageManager": "pnpm@11.13.1",
+    "scripts": {
+        "build": "pnpm -r build",
+        "typecheck": "pnpm -r typecheck",
+        "test": "pnpm -r test",
+        "test:watch": "pnpm -r --parallel test:watch",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write ."
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.5.4"
+    }
+}

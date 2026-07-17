@@ -1,0 +1,7 @@
+---
+packages:
+  - agent
+allowBuilds:
+  "@google/genai": true
+  esbuild: true
+  protobufjs: true
