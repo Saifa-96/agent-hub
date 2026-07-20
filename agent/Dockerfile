@@ -1,7 +1,7 @@
 # === Build stage ===
 FROM node:24.18.0-slim AS builder
 
-RUN corepack enable && corepack prepare pnpm@11.13.1 --activate
+RUN npm install --global pnpm@11.13.1
 
 WORKDIR /build
 
@@ -16,7 +16,7 @@ RUN pnpm --filter @agent-hub/pi-agent build
 # === Runtime stage ===
 FROM node:24.18.0-slim
 
-RUN corepack enable && corepack prepare pnpm@11.13.1 --activate \
+RUN npm install --global pnpm@11.13.1 \
     && apt-get update && apt-get install -y --no-install-recommends \
         git bash curl ca-certificates ripgrep jq \
     && rm -rf /var/lib/apt/lists/*
@@ -30,11 +30,10 @@ RUN pnpm install --prod --frozen-lockfile --filter @agent-hub/pi-agent
 COPY --from=builder /build/agent/dist/ ./agent/dist/
 
 RUN mkdir -p /workspace && chown -R node:node /workspace
-ENV WORKSPACE_DIR=/workspace HOME=/workspace
+ENV HOME=/workspace
 
 USER node
 
 EXPOSE 3001
-WORKDIR /workspace
 
 CMD ["node", "/app/agent/dist/index.js"]
