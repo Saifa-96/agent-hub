@@ -60,3 +60,4 @@ docker build -f agent/Dockerfile -t agent-hub/pi-agent .
 - [实现路线](roadmap/step-1.md)
 - [Agent Platform data layer](docs/agent-platform-data-layer.md)
 - [Kubernetes 设计](docs/kubernetes-for-agent-hub.md)
+- [从源码到 Kubernetes：Agent 镜像构建、注册、发布与拉取](docs/container-image-to-kubernetes.md)
