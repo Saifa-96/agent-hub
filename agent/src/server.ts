@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { Hono } from "hono";
 import { streamSSE } from "hono/streaming";
-import { chat } from "./agent.js";
+import { chat, MODEL_ID } from "./agent.js";
 import type { UniversalEvent } from "./universal-event-types.js";
 import { UniversalEventTranslator } from "./universal-events.js";
 
@@ -12,7 +12,7 @@ app.get("/health", (context) => context.json({ status: "ok" }));
 app.get("/info", (context) =>
     context.json({
         agent_type: "pi-agent",
-        model: process.env.PI_MODEL ?? "default",
+        model: MODEL_ID,
         capabilities: {
             system_prompt: false,
             mcp: false,

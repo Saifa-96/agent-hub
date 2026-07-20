@@ -20,9 +20,12 @@ roadmap/  实现路线
 ## 开始使用
 
 ```bash
+cp .env.example .env
 pnpm install
-pnpm dev
+pnpm --dir agent dev
 ```
+
+在根目录 `.env` 中配置 `DEEPSEEK_API_KEY`。工作目录在开发/测试时固定为 `./workspace`，生产环境固定为 `/workspace`，模型固定为 `deepseek-v4-flash`。`.env` 已被 Git 忽略。
 
 ## 全局命令
 
